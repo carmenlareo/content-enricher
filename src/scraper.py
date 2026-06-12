@@ -1,11 +1,13 @@
 import requests
 from bs4 import BeautifulSoup
+from src.config import WIKIPEDIA_BASE_URL, USER_AGENT
+
 
 class WikipediaScraper:
     def __init__(self):
 
-        self.headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'}
-        self.base_url = "https://es.wikipedia.org/wiki/"
+        self.headers = {'User-Agent': USER_AGENT}
+        self.base_url = WIKIPEDIA_BASE_URL
 
     def buscar_tema(self, tema):
 
@@ -41,5 +43,5 @@ class WikipediaScraper:
             return titulo, contenido_completo
 
         except Exception as e:
-            print(f"⚠️ Error al conectar con Wikipedia: {e}")
+            print(f"Error al buscar el tema: {e}")
             return None, None
